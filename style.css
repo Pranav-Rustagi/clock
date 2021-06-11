@@ -1,0 +1,82 @@
+:root {
+    --basic-unit: 1vh;
+    --basic-unit-px: 0.126vh;
+    --shade-secondary: #d10000;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main {
+    height: 100vh;
+    display: grid;
+    place-items: center;
+    background: -webkit-linear-gradient(105deg, var(--shade-dark), var(--shade-light));
+}
+
+#container {
+    width: calc(50 * var(--basic-unit));
+    height: calc(50 * var(--basic-unit));
+    border-radius: 100%;
+
+    box-shadow: calc(-8 * var(--basic-unit-px)) calc(-8 * var(--basic-unit-px)) calc(24 * var(--basic-unit-px)) var(--shade-light), calc(8 * var(--basic-unit-px)) calc(8 * var(--basic-unit-px)) calc(24 * var(--basic-unit-px)) var(--shade-dark),
+                calc(-16 * var(--basic-unit-px)) calc(-16 * var(--basic-unit-px)) calc(16 * var(--basic-unit-px)) var(--shade-inset-light) inset, calc(16 * var(--basic-unit-px)) calc(16 * var(--basic-unit-px)) calc(16 * var(--basic-unit-px)) var(--shade-inset-dark) inset;
+
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#container::before {
+    position: absolute;
+    content: "";
+    width: calc(0.88 * var(--basic-unit));
+    height: calc(0.88 * var(--basic-unit));
+    border: calc(0.4 * var(--basic-unit)) solid var(--shade-primary);
+    border-radius: 100%;
+    z-index: 5;
+}
+
+.hand {
+    position: absolute;
+    left: calc(50% - calc(0.5 * var(--basic-unit-px)));
+    bottom: calc(50% - calc(5 * var(--basic-unit-px)));
+    width: var(--basic-unit-px);
+    min-width: 1px;
+    background: -webkit-linear-gradient(bottom,var(--shade-primary) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(15 * var(--basic-unit-px)), var(--shade-primary) calc(15 * var(--basic-unit-px)));
+    transform-origin: 50% calc(100% - calc(5 * var(--basic-unit-px)));
+    transform: rotate(0deg) translateY(calc(5 * var(--basic-unit-px)));
+}
+
+
+#hour {
+    width: calc(3 * var(--basic-unit-px));
+    height: calc(20% + calc(10 * var(--basic-unit-px)));
+    left: calc(50% - calc(1.5 * var(--basic-unit-px)));
+}
+
+#min {
+    height: calc(30% + calc(10 * var(--basic-unit-px)));
+}
+
+
+#sec {
+    height: calc(35% + calc(10 * var(--basic-unit-px)));
+    background: -webkit-linear-gradient(bottom, var(--shade-secondary) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(15 * var(--basic-unit-px)), var(--shade-secondary) calc(15 * var(--basic-unit-px)));
+}
+
+@media (orientation: portrait) {
+    :root {
+        --basic-unit: 1vw;
+        --basic-unit-px: 0.126vw;
+    }
+
+    #container {
+        transform: scale(1.25);
+    }
+}
