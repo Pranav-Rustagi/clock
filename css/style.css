@@ -8,32 +8,130 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-main {
+section, #container, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container::before, .hand, footer, nav {
+    position: absolute;
+}
+
+section, aside {
     height: 100vh;
-    display: grid;
-    place-items: center;
+}
+
+aside {
+    position: fixed;
+    width: 15rem;
+    background: var(--shade-primary);
+    color: var(--shade-light);
+}
+
+aside > * {
+    padding: 2rem 1rem 1rem;
+}
+
+aside header {
+    font-size: 2rem;
+    border-bottom: 2px solid var(--shade-light);
+}
+
+#setting {
+    display: flex;
+    justify-content: space-between;
+}
+
+#setting label {
+    position: relative;
+    width: 3rem;
+}
+
+#darkMode {
+    visibility: hidden;
+}
+
+#darkMode + span {
+    position: absolute;
+    background: #ffffff80;
+    cursor: pointer;
+    border-radius: 5rem;
+    right: 0;
+    width: 2.5rem;
+    height: 1.25rem;
+    transition: all .5s;
+}
+
+#darkMode + span::before {
+    content: "";
+    position: absolute;
+    display: inline-block;
+    left: 0.125rem;
+    top: 0.125rem;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 100%;
+    background: var(--shade-light);
+    transition: all .5s;
+}
+
+#darkMode:checked + span {
+    background: #00a1ff;
+}
+
+#darkMode:checked + span::before {
+    left: 1.375rem;
+}
+
+footer {
+    border-top: 2px solid var(--shade-light);
+    bottom: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+#links {
+    width: 100%;
+}
+
+#links > a {
+    margin-right: 1.5rem;
+    text-decoration: none;
+}
+
+#links div {
+    height: 2rem;
+    width: 2rem;
+    display: inline-block;
+    cursor: pointer;
+    background: var(--shade-light);
+}
+
+section {
+    position: fixed;
+    right: 0;
+    width: calc(100vw - 15rem);
     background: -webkit-linear-gradient(105deg, var(--shade-dark), var(--shade-light));
 }
 
 #container {
     width: calc(50 * var(--basic-unit));
     height: calc(50 * var(--basic-unit));
+    max-width: calc((100vw - 15rem) * 0.5);
+    max-height: calc((100vw - 15rem) * 0.5);
     border-radius: 100%;
-
+    position: relative;
     box-shadow: calc(-8 * var(--basic-unit-px)) calc(-8 * var(--basic-unit-px)) calc(24 * var(--basic-unit-px)) var(--shade-light), calc(8 * var(--basic-unit-px)) calc(8 * var(--basic-unit-px)) calc(24 * var(--basic-unit-px)) var(--shade-dark),
                 calc(-16 * var(--basic-unit-px)) calc(-16 * var(--basic-unit-px)) calc(16 * var(--basic-unit-px)) var(--shade-inset-light) inset, calc(16 * var(--basic-unit-px)) calc(16 * var(--basic-unit-px)) calc(16 * var(--basic-unit-px)) var(--shade-inset-dark) inset;
-
-    display: flex;
-    position: relative;
-    justify-content: center;
-    align-items: center;
 }
 
 
 #container::before {
-    position: absolute;
     content: "";
     width: calc(0.88 * var(--basic-unit));
     height: calc(0.88 * var(--basic-unit));
@@ -43,7 +141,6 @@ main {
 }
 
 .hand {
-    position: absolute;
     left: calc(50% - calc(0.5 * var(--basic-unit-px)));
     bottom: calc(50% - calc(5 * var(--basic-unit-px)));
     width: var(--basic-unit-px);
@@ -69,6 +166,7 @@ main {
     height: calc(35% + calc(10 * var(--basic-unit-px)));
     background: -webkit-linear-gradient(bottom, var(--shade-secondary) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(15 * var(--basic-unit-px)), var(--shade-secondary) calc(15 * var(--basic-unit-px)));
 }
+
 
 @media (orientation: portrait) {
     :root {
