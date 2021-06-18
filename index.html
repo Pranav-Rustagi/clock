@@ -6,25 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>myClock</title>
 
-    <link rel="stylesheet" href="./css/light-theme.css">
+    <!-- linking favicon -->
+    <link rel="shortcut icon" href="./logo/logo.png" type="image/x-icon">
+
+    <!-- linking stylesheets -->
+    <link rel="stylesheet" href="./css/dark-theme.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-
     <main>
 
+        <!-- sidebar -->
         <aside>
-
             <header>myClock</header>
-
-            <div style="margin-top: 3rem;" id="setting">
+            <div style="margin-top: 3rem; justify-content: space-between;" id="setting">
                 <span>Dark theme</span>
-                <label for="darkMode">
-                    <input type="checkbox" id="darkMode">
+                <label for="darkMode" style="width: 3rem;">
+                    <input type="checkbox" id="darkMode" style="visibility: hidden;">
                     <span class="slider round"></span>
                 </label>
             </div>
-
             <footer>
                 <span>Created by</span>
                 <span style="font-size: 1.25rem; line-height: 2rem"><b>Pranav Rustagi</b></span>
@@ -42,9 +43,9 @@
                     </a>
                 </div>
             </footer>
-
         </aside>
 
+        <!-- clock section -->
         <section>
             <div id="container">
                 <div class="hand" id="sec"></div>

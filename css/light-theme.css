@@ -4,5 +4,6 @@
     --shade-inset-light: #dbe1ec;
     --shade-inset-dark: #c4cddd83;
     --shade-primary: #141414;
-    --shade-aside: red;
+    --shade-aside: #0000006b;
+    --shade-toggle-on: #00a1ff;
 }

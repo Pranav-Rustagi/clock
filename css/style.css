@@ -2,6 +2,8 @@
     --basic-unit: 1vh;
     --basic-unit-px: 0.126vh;
     --shade-secondary: #d10000;
+    --shade-toggle: #fff;
+    --shade-toggle-bck: #bfbfbf;
 }
 
 * {
@@ -11,25 +13,41 @@
     font-family: Arial, Helvetica, sans-serif;
 }
 
-section, #container, footer {
+#setting, section, #container, aside footer {
     display: flex;
+}
+
+section, #container {
     justify-content: center;
     align-items: center;
 }
 
-#container::before, .hand, footer, nav {
+#setting label, #container {
+    position: relative;
+}
+
+#container::before, .hand, footer, #darkMode + span, #darkMode + span::before  {
     position: absolute;
 }
 
-section, aside {
+aside, section {
+    position: fixed;
     height: 100vh;
 }
 
+#darkMode + span::before, #container, #container::before {
+    border-radius: 100%;
+}
+
+aside footer, #links {
+    width: 100%;
+}
+
 aside {
-    position: fixed;
     width: 15rem;
-    background: var(--shade-primary);
+    background: var(--shade-aside);
     color: var(--shade-light);
+    z-index: 10;
 }
 
 aside > * {
@@ -41,23 +59,8 @@ aside header {
     border-bottom: 2px solid var(--shade-light);
 }
 
-#setting {
-    display: flex;
-    justify-content: space-between;
-}
-
-#setting label {
-    position: relative;
-    width: 3rem;
-}
-
-#darkMode {
-    visibility: hidden;
-}
-
 #darkMode + span {
-    position: absolute;
-    background: #ffffff80;
+    background: var(--shade-toggle-bck);
     cursor: pointer;
     border-radius: 5rem;
     right: 0;
@@ -68,35 +71,27 @@ aside header {
 
 #darkMode + span::before {
     content: "";
-    position: absolute;
-    display: inline-block;
     left: 0.125rem;
     top: 0.125rem;
     width: 1rem;
     height: 1rem;
-    border-radius: 100%;
-    background: var(--shade-light);
+    background: var(--shade-toggle);
     transition: all .5s;
 }
 
 #darkMode:checked + span {
-    background: #00a1ff;
+    background: var(--shade-toggle-on);
 }
 
 #darkMode:checked + span::before {
     left: 1.375rem;
 }
 
-footer {
+aside footer {
     border-top: 2px solid var(--shade-light);
     bottom: 1rem;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
-}
-
-#links {
-    width: 100%;
 }
 
 #links > a {
@@ -113,7 +108,6 @@ footer {
 }
 
 section {
-    position: fixed;
     right: 0;
     width: calc(100vw - 15rem);
     background: -webkit-linear-gradient(105deg, var(--shade-dark), var(--shade-light));
@@ -124,8 +118,6 @@ section {
     height: calc(50 * var(--basic-unit));
     max-width: calc((100vw - 15rem) * 0.5);
     max-height: calc((100vw - 15rem) * 0.5);
-    border-radius: 100%;
-    position: relative;
     box-shadow: calc(-8 * var(--basic-unit-px)) calc(-8 * var(--basic-unit-px)) calc(24 * var(--basic-unit-px)) var(--shade-light), calc(8 * var(--basic-unit-px)) calc(8 * var(--basic-unit-px)) calc(24 * var(--basic-unit-px)) var(--shade-dark),
                 calc(-16 * var(--basic-unit-px)) calc(-16 * var(--basic-unit-px)) calc(16 * var(--basic-unit-px)) var(--shade-inset-light) inset, calc(16 * var(--basic-unit-px)) calc(16 * var(--basic-unit-px)) calc(16 * var(--basic-unit-px)) var(--shade-inset-dark) inset;
 }
@@ -136,8 +128,7 @@ section {
     width: calc(0.88 * var(--basic-unit));
     height: calc(0.88 * var(--basic-unit));
     border: calc(0.4 * var(--basic-unit)) solid var(--shade-primary);
-    border-radius: 100%;
-    z-index: 5;
+    z-index: 1;
 }
 
 .hand {
@@ -176,5 +167,10 @@ section {
 
     #container {
         transform: scale(1.25);
+    }
+
+    .blurView {
+        -webkit-filter: blur(4px);
+        filter: blur(4px);
     }
 }
