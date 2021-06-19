@@ -22,17 +22,16 @@ section, #container {
     align-items: center;
 }
 
-#setting label, #container {
+main, #setting label, #container {
     position: relative;
 }
 
-#container::before, .hand, footer, #darkMode + span, #darkMode + span::before  {
+aside, section, #container::before, .hand, footer, #darkMode + span, #darkMode + span::before  {
     position: absolute;
 }
 
 aside, section {
-    position: fixed;
-    height: 100vh;
+    height: 100%;
 }
 
 #darkMode + span::before, #container, #container::before {

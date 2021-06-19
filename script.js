@@ -1,5 +1,10 @@
 window.onload = function() {
-    let date = new Date();
+
+    // setting height of main element so that address bar in mobile view does not affect layout
+    document.querySelector("main").style.height = window.innerHeight + "px";
+
+    // computing total seconds
+    const date = new Date();
     let totalSec = (date.getHours() * 3600) + (date.getMinutes() * 60) + date.getSeconds();
 
     const hourHand = document.getElementById("hour");
@@ -9,10 +14,10 @@ window.onload = function() {
     setHands(totalSec++, hourHand, minHand, secHand);
     setInterval(() => {
         setHands(totalSec++, hourHand, minHand, secHand);
-    }, 1000)
+    }, 1000);
 }
 
-
+// function to position clock hands every second
 const setHands = (totalSec, hourHand, minHand, secHand) => {
     let hrs = ((totalSec / 3600) % 12).toFixed(2);
     let mins = ((totalSec / 60) % 60).toFixed(2);
