@@ -1,21 +1,42 @@
 window.onload = function() {
 
-    // setting height of main element so that address bar in mobile view does not affect layout
-    document.querySelector("main").style.height = window.innerHeight + "px";
-
-    // computing total seconds
-    const date = new Date();
-    let totalSec = (date.getHours() * 3600) + (date.getMinutes() * 60) + date.getSeconds();
+    setLayoutHeight();
 
     const hourHand = document.getElementById("hour");
     const minHand = document.getElementById("min");
     const secHand = document.getElementById("sec");
+    const themeEl = document.getElementById("theme");
+    const themeToggle = document.getElementById("darkMode");
+    const date = new Date();
 
+
+    // computing total seconds
+    let totalSec = (date.getHours() * 3600) + (date.getMinutes() * 60) + date.getSeconds();
+
+
+    // changing theme
+    themeToggle.addEventListener("change", (event) => {
+        let theme = (event.target.checked) ? 'dark' : 'light';
+        themeEl.setAttribute("href", `./css/${theme}-theme.css`)
+    })
+
+    // setting new height for the main element when screen resized
+    window.addEventListener("resize", setLayoutHeight);
+
+
+    // calling setHands() every second
     setHands(totalSec++, hourHand, minHand, secHand);
     setInterval(() => {
         setHands(totalSec++, hourHand, minHand, secHand);
     }, 1000);
 }
+
+
+// function to set layout height of main element so that address bar in mobile view does not affect layout
+const setLayoutHeight = () => {
+    document.querySelector("main").style.height = window.innerHeight + "px";
+}
+
 
 // function to position clock hands every second
 const setHands = (totalSec, hourHand, minHand, secHand) => {
