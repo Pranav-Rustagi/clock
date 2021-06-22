@@ -7,7 +7,7 @@
     <title>myClock</title>
 
     <!-- linking favicon -->
-    <link rel="shortcut icon" href="./logo/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="./resources/logo.png" type="image/x-icon">
 
     <!-- linking stylesheets -->
     <link rel="stylesheet" href="./css/light-theme.css" id="theme">
@@ -32,14 +32,14 @@
                 <br>
                 <div id="links">
                     <a href="https://www.github.com/Pranav-Rustagi" target="_blank">
-                        <div style="-webkit-mask: url(./svgs/github.svg) no-repeat center; mask: url(./svgs/github.svg) no-repeat center;" title="github"></div>
+                        <div style="-webkit-mask: url(./resources/github.svg) no-repeat center; mask: url(./resources/github.svg) no-repeat center;" title="github"></div>
                     </a>
 
                     <a href="https://www.linkedin.com/in/pranav-rustagi" target="_blank">
-                        <div style="-webkit-mask: url(./svgs/linkedin.svg) no-repeat center; mask: url(./svgs/linkedin.svg) no-repeat center;" title="linkedin"></div>
+                        <div style="-webkit-mask: url(./resources/linkedin.svg) no-repeat center; mask: url(./resources/linkedin.svg) no-repeat center;" title="linkedin"></div>
                     </a>
                     <a href="https://stackoverflow.com/users/14046126/pranav-rustagi" target="_blank">
-                        <div style="-webkit-mask: url(./svgs/stackoverflow.svg) no-repeat center; mask: url(./svgs/stackoverflow.svg) no-repeat center;" title="stackoverflow"></div>
+                        <div style="-webkit-mask: url(./resources/stackoverflow.svg) no-repeat center; mask: url(./resources/stackoverflow.svg) no-repeat center;" title="stackoverflow"></div>
                     </a>
                 </div>
             </footer>
@@ -53,6 +53,12 @@
                 <div class="hand" id="hour"></div>
             </div>
         </section>
+
+        <!-- block to display for small width devices with landscape orientation -->
+        <div id="rotateScreen">
+            <img src="./resources/rotate.gif" alt="rotate device" width="35%">
+            <p style="color: #646464;">Rotate device back to portrait mode</p>
+        </div>
     </main>
     
     <script src="./script.js"></script>

@@ -161,32 +161,46 @@ section {
     background: -webkit-linear-gradient(bottom, var(--shade-secondary) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(15 * var(--basic-unit-px)), var(--shade-secondary) calc(15 * var(--basic-unit-px)));
 }
 
+#rotateScreen {
+    display: none;
+}
+
 
 @media (orientation: portrait) {
     :root {
         --basic-unit: 1vw;
         --basic-unit-px: 0.126vw;
     }
-
-    #container {
-        transform: scale(1.25);
-    }
-
+    
     .blurView {
         -webkit-filter: blur(4px);
         filter: blur(4px);
     }
-
-    /* aside { */
-        /* left: -100%; */
-    /* } */
-
+    
     section {
         width: 100vw;
     }
-
+    
     #container {
+        transform: scale(1.25);
         max-width: 50vh;
         max-height: 50vh;
+    }
+}
+
+
+@media (orientation: landscape) and (max-height: 575px) {
+    main {
+        display: grid;
+    }
+
+    main > *{
+        display: none;
+    }
+
+    #rotateScreen {
+        display: block;
+        text-align: center;
+        place-self: center;
     }
 }
