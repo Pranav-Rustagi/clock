@@ -33,13 +33,9 @@ const setLayoutHeight = mainEl => {
 // shows message to rotate device back to portrait orientation
 const displayRotateMsg = () => {
     let msgEl = document.querySelector("#rotateScreen");
-
-    if(getComputedStyle(msgEl).display === "block")
-        alert(screen.orientation.angle);
-
     let isRotateRequired = (getComputedStyle(msgEl).display === "block" && screen.orientation.angle == 270);
     
-    msgEl.querySelector("img").style.transform = "rotateZ(270deg)" + ((isRotateRequired) ? " rotateY(180deg)" : "");
+    msgEl.querySelector("img").style.transform = "rotateZ(270deg)" + ((isRotateRequired) ? " rotateX(180deg)" : "");
 }
 
 
