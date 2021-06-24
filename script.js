@@ -34,7 +34,6 @@ const setLayoutHeight = mainEl => {
 const displayRotateMsg = () => {
     let msgEl = document.querySelector("#rotateScreen");
     let isRotateRequired = (getComputedStyle(msgEl).display === "block" && screen.orientation.angle == 270);
-    
     msgEl.querySelector("img").style.transform = "rotateZ(270deg)" + ((isRotateRequired) ? " rotateX(180deg)" : "");
 }
 
@@ -54,9 +53,12 @@ const bindEvents = mainEl => {
     // setting new height for the main element when screen resized
     window.addEventListener("resize", () => { 
         setLayoutHeight(mainEl)
-    });
+    }, false);
 
-
+    window.addEventListener("orientationchange", () => {
+        window.dispatchEvent(new Event("resize"));
+    }, false);
+    
 }
 
 
