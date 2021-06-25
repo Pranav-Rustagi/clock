@@ -41,8 +41,15 @@ const displayRotateMsg = () => {
 
 // function to bind events to the elements
 const bindEvents = mainEl => {
+    const sidebar = document.querySelector("aside");
+    const sidebarToggler = sidebar.querySelector("label[for='toggleAside']");
     const themeEl = document.getElementById("theme");
     const themeToggle = document.getElementById("darkMode");
+
+    // toggling sidebar
+    sidebarToggler.addEventListener("change", (event) => {
+        (event.target.checked) ? sidebar.classList.add("sidebar-active") : sidebar.classList.remove("sidebar-active");
+    })
 
     // changing theme
     themeToggle.addEventListener("change", (event) => {
@@ -55,10 +62,10 @@ const bindEvents = mainEl => {
         setLayoutHeight(mainEl)
     }, false);
 
+    // handles when orientation changes by 180deg and screen size does not change
     window.addEventListener("orientationchange", () => {
         window.dispatchEvent(new Event("resize"));
     }, false);
-    
 }
 
 

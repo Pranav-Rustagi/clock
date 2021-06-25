@@ -2,7 +2,7 @@
     --basic-unit: 1vh;
     --basic-unit-px: 0.126vh;
     --shade-secondary: #d10000;
-    --shade-toggle: #fff;
+    --shade-toggle: #f3f7ff;
     --shade-toggle-bck: #bfbfbf;
 }
 
@@ -30,13 +30,32 @@ main, #setting label, #container {
     position: relative;
 }
 
-aside, section, #container::before, .hand, aside footer, #darkMode + span, #darkMode + span::before  {
+aside, label[for = "toggleAside"] input, section, #container::before, .hand, aside footer, #darkMode + span, #darkMode + span::before  {
     position: absolute;
 }
 
 aside, section {
     height: 100%;
 }
+
+label[for = "toggleAside"] {
+    position: fixed;
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.5rem;
+}
+
+#toggleAside + div {
+    transition: all 0.5s;
+    -webkit-mask: url(./../resources/menu.svg) no-repeat center; 
+    mask: url(./../resources/menu.svg) no-repeat center;
+}
+
+#toggleAside:checked + div {
+    transform: rotate(180deg);
+    -webkit-mask: url(./../resources/cross.svg) no-repeat center; 
+    mask: url(./../resources/cross.svg) no-repeat center;
+} 
 
 #darkMode + span::before, #container, #container::before {
     border-radius: 100%;
@@ -110,6 +129,12 @@ aside footer {
     background: var(--shade-light);
 }
 
+#toggleAside + div {
+    width: 2.5rem;
+    height: 2.5rem;
+    background: var(--shade-primary);
+}
+
 section {
     right: 0;
     width: calc(100vw - 15rem);
@@ -161,7 +186,7 @@ section {
     background: -webkit-linear-gradient(bottom, var(--shade-secondary) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(5 * var(--basic-unit-px)), rgba(0,0,0,0) calc(15 * var(--basic-unit-px)), var(--shade-secondary) calc(15 * var(--basic-unit-px)));
 }
 
-#rotateScreen {
+#rotateScreen, label[for = "toggleAside"] {
     display: none;
 }
 
@@ -171,10 +196,18 @@ section {
         --basic-unit: 1vw;
         --basic-unit-px: 0.126vw;
     }
-    
-    .blurView {
-        -webkit-filter: blur(4px);
-        filter: blur(4px);
+
+    aside {
+        left: -15rem;
+        transition: left 0.5s;
+    }
+
+    .sidebar-active {
+        left: 0!important;
+    }
+
+    label[for = "toggleAside"] {
+        display: inline-block;
     }
     
     section {
@@ -190,6 +223,10 @@ section {
 
 
 @media (orientation: landscape) and (max-height: 575px) {
+    body {
+        background: var(--shade-toggle);
+    }
+
     main {
         display: grid;
     }
